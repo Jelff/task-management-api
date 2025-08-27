@@ -40,4 +40,19 @@ export class TaskService {
 
     throw new HttpException(`Task with id ${id} not found`, HttpStatus.BAD_REQUEST);
   }
+
+  findAll(params: FindAllParameters): TaskDto[] {
+    return this.tasks.filter(t => {
+      let match = true;
+
+      if (params.title != undefined && !t.title.includes(params.title)) {
+        match = false
+      }
+
+      if (params.status != undefined && !t.status.includes(params.status)) {
+        match = false
+      }
+      return match;
+    })
+  }
 }
