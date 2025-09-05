@@ -5,13 +5,7 @@ import { hashSync as bcryptHashSync } from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  private readonly users: UserDto[] = [
-    {
-      id: '1',
-      username: 'user',
-      password: 'senha123',
-    },
-  ];
+  private readonly users: UserDto[] = [];
 
   create(newUser: UserDto) {
     newUser.id = uuid();
